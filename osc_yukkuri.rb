@@ -2,7 +2,7 @@ require 'osc-ruby'
 require 'osc-ruby/em_server'
 require 'dotenv'
 require 'date'
-require 'shellwords'
+require 'open3'
 
 Dotenv.load
 
@@ -18,7 +18,7 @@ server.add_method '/jihou' do
 end
 
 server.add_method '/freetext' do |message|
-    `#{aquestalk_path} '#{Shellwords.escape(message.to_a)}' | aplay`
+    Open3.pipeline_r(["#{aquestalk_path}", message.to_a], ['aplay'])
 end
 
 server.run

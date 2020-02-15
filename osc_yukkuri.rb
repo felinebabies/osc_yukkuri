@@ -18,7 +18,7 @@ server.add_method '/jihou' do
 end
 
 server.add_method '/freetext' do |message|
-    `#{aquestalk_path} '#{Shellwords.escape(message)}' | aplay`
+    `#{aquestalk_path} '#{Shellwords.escape(message.to_a)}' | aplay`
 end
 
 server.run

@@ -17,7 +17,7 @@ server.add_method '/jihou' do
     system(aquestalk_path, '"現在は、#{timestr}です。" | aplay')
 end
 
-server.add_methid '/freetext' do |message|
+server.add_method '/freetext' do |message|
     arg = "'#{Shellwords.escape(message)}'' | aplay"
     system(aquestalk_path, arg)
 end
